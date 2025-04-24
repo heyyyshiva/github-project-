@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team GitHub Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Team GitHub Projects</h1>
+        <p>Showcase our team's GitHub repositories and projects</p>
+    </header>
+    
+    <div class="container">
+        <section class="section upload-section">
+            <h2>Add New Project</h2>
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="team-member">Team Member</label>
+                    <select id="team-member" required>
+                        <option value="">Select Team Member</option>
+                        <option value="member1">SHIVA</option>
+                        <option value="member2">NASH</option>
+                        <option value="member3">RUTVIK</option>
+                        <option value="member4">OMKAR</option>
+                        <option value="member5">PRANAV</option>
+                        <option value="member6">PREETI</option>
+                        <option value="member7">SNEHAL</option>
+                        <option value="member8">JANHAVI</option>
+                        <option value="member9">SANSKAR</option>
+                        <option value="member10">ROHAN</option>
+                        <option value="member11">OM</option>
+                        <option value="member12">PRIYANSHU</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-title">Project Title</label>
+                    <input type="text" id="project-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="repo-url">GitHub Repository URL</label>
+                    <input type="url" id="repo-url" required placeholder="https://github.com/username/repository">
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-desc">Project Description</label>
+                    <textarea id="project-desc" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tech-stack">Technologies Used</label>
+                    <input type="text" id="tech-stack" placeholder="E.g., React, Node.js, MongoDB">
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-role">Your Role in Project</label>
+                    <input type="text" id="project-role" placeholder="E.g., Lead Developer, Backend Engineer">
+                </div>
+                
+                <div class="form-group">
+                    <label for="team-members">Collaborating Team Members</label>
+                    <input type="text" id="team-members" placeholder="E.g., John, Sarah, Mike">
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-image">Project Image (Optional)</label>
+                    <div class="small-upload-container">
+                        <input type="file" id="project-image" accept="image/*" class="image-input">
+                        <div class="upload-preview" id="imagePreview">
+                            <img src="" alt="Preview" id="previewImage">
+                            <button type="button" class="clear-image" id="clearImage">&times;</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Add Project</button>
+                
+                <div class="upload-progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </form>
+        </section>
+        
+        <section class="section">
+            <div class="filter-section">
+                <h2>Team Projects</h2>
+                <div class="filters">
+                    <select id="member-filter">
+                        <option value="all">All Team Members</option>
+                        <option value="member1">SHIVA</option>
+                        <option value="member2">NASH</option>
+                        <option value="member3">RUTVIK</option>
+                        <option value="member4">OMKAR</option>
+                        <option value="member5">PRANAV</option>
+                        <option value="member6">PREETI</option>
+                        <option value="member7">SNEHAL</option>
+                        <option value="member8">JANHAVI</option>
+                        <option value="member9">SANSKAR</option>
+                        <option value="member10">ROHAN</option>
+                        <option value="member11">OM</option>
+                        <option value="member12">PRIYANSHU</option>
+                    </select>
+                    <select id="tech-filter">
+                        <option value="all">All Technologies</option>
+                    </select>
+                </div>
+            </div>
+            <div id="repo-grid" class="repo-grid">
+                <div class="repo-card">
+                    <div class="member-tag">Team Member 1</div>
+                    <h3 class="repo-title">Sample Team Project</h3>
+                    <p class="repo-desc">This is a sample team project description to show how the cards will look.</p>
+                    <div class="repo-meta">
+                        <span>React, Node.js</span>
+                        <span>Last updated: 3 days ago</span>
+                    </div>
+                    <div class="team-info">
+                        <p><strong>Role:</strong> Lead Developer</p>
+                        <p><strong>Team:</strong> Member 2, Member 3</p>
+                    </div>
+                    <a href="#" class="repo-link">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <section class="section team-profiles">
+        <h2>Team Profiles</h2>
+        <div class="profiles-grid">
+            <div class="profile-card" data-member="member1">
+                <h3>SHIVA</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member2">
+                <h3>NASH</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member3">
+                <h3>RUTVIK</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member4">
+                <h3>OMKAR</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member5">
+                <h3>PRANAV</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member6">
+                <h3>PREETI</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member7">
+                <h3>SNEHAL</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member8">
+                <h3>JANHAVI</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member9">
+                <h3>SANSKAR</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member10">
+                <h3>ROHAN</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member11">
+                <h3>OM</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card" data-member="member12">
+                <h3>PRIYANSHU</h3>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Team GitHub Projects</p>
+    </footer>
+    
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Profile Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="profile-details">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-number" id="totalProjects">0</div>
+                    <div class="profile-stat-label">Total Projects</div>
+                </div>
+                <div class="profile-stat-card">
+                    <div class="profile-stat-number" id="totalLinks">0</div>
+                    <div class="profile-stat-label">Links Uploaded</div>
+                </div>
+                <div class="profile-stat-card">
+                    <div class="profile-stat-number" id="lastActive">-</div>
+                    <div class="profile-stat-label">Last Active</div>
+                </div>
+            </div>
+            <div class="profile-links">
+                <h3 class="profile-links-title">Recent Links</h3>
+                <div class="links-list" id="linksList">
+                    <!-- Links will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

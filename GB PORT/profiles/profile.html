@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Member Profile</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../animations.css">
+</head>
+<body>
+    <div class="profile-container">
+        <header class="profile-header">
+            <a href="../index.html" class="back-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Team
+            </a>
+            <h1 class="member-name">Loading...</h1>
+            <p class="member-role">Loading...</p>
+        </header>
+
+        <div class="profile-content">
+            <section class="profile-info">
+                <div class="info-card">
+                    <h2>About</h2>
+                    <p class="member-bio">Loading...</p>
+                </div>
+                <div class="info-card">
+                    <h2>Skills</h2>
+                    <div class="skills-list">
+                        <!-- Skills will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects-section">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <!-- Projects will be populated dynamically -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const memberId = new URLSearchParams(window.location.search).get('id');
+            if (memberId) {
+                loadMemberProfile(memberId);
+            } else {
+                window.location.href = '../index.html';
+            }
+        });
+
+        function loadMemberProfile(memberId) {
+            const member = teamProfiles[memberId];
+            if (!member) {
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Update page title and header
+            document.title = `${member.name}'s Profile`;
+            document.querySelector('.member-name').textContent = member.name;
+            document.querySelector('.member-role').textContent = member.role;
+            document.querySelector('.member-bio').textContent = member.bio;
+
+            // Update skills
+            const skillsList = document.querySelector('.skills-list');
+            member.skills.forEach(skill => {
+                const skillElement = document.createElement('span');
+                skillElement.className = 'skill-tag';
+                skillElement.textContent = skill;
+                skillsList.appendChild(skillElement);
+            });
+
+            // Load projects
+            const memberProjects = projects.filter(project => project.teamMember === memberId);
+            const projectsGrid = document.querySelector('.projects-grid');
+
+            if (memberProjects.length === 0) {
+                projectsGrid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📝</div>
+                        <p class="empty-state-text">No projects yet</p>
+                        <p class="empty-state-subtext">Projects added will appear here</p>
+                    </div>
+                `;
+                return;
+            }
+
+            memberProjects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-desc">${project.description || 'No description provided.'}</p>
+                    <div class="project-meta">
+                        <span class="tech-stack">${project.techStack || 'Not specified'}</span>
+                        <span class="last-updated">Last updated: ${project.lastUpdated}</span>
+                    </div>
+                    <div class="project-info">
+                        <p><strong>Role:</strong> ${project.role || 'Not specified'}</p>
+                        <p><strong>Team:</strong> ${project.collaborators || 'Solo project'}</p>
+                    </div>
+                    <a href="${project.url}" target="_blank" class="project-link">View on GitHub</a>
+                `;
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+    </script>
+</body>
+</html> 
